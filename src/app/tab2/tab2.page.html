@@ -1,17 +1,111 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 2
+  <ion-toolbar color = "danger">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title  class="registro">
+      Registro de Usuario 
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" >
+  <div align="center"><img src="assets/img/logoazu.png"></div>
   <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+
+ 
+  <form #formulario="ngForm" (ngSubmit)="onSubmitTemplate()">
+   
+  <ion-item>
+    <ion-label position="floating">Nombre</ion-label>
+    <ion-input type = "nombre"
+              name ="nombre"
+              pattern = "[a-z]{3,30}"
+              [(ngModel)]="usuario.nombre"
+              required>
+            </ion-input>
+              
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Apellido</ion-label>
+    <ion-input type = "apellido"
+              name ="apellido"
+              pattern = "[a-z]{2,30}"
+              [(ngModel)]="usuario.apellido"
+              required>
+            </ion-input>
+              
+  </ion-item>
+
+
+
+
+    
+
+  
+     <ion-list>
+    <ion-item>
+    <ion-label position="floating">Correo Electrónico</ion-label>
+    <ion-input type = "email"
+              name ="email"
+              pattern = "[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" 
+              title="Eight or more characters"
+              [(ngModel)]="usuario.email"
+              required>
+            </ion-input>
+              
+  </ion-item>
+ 
+
+</ion-list>
+
+  
+
+
+
+<ion-item>
+  <ion-label position="floating">Usuario</ion-label>
+  <ion-input type = "nombreUsuario"
+            name ="nombreUsuario"
+            pattern = "[a-z]{4,15}"
+            [(ngModel)]="usuario.nombreUsuario"
+            required>
+          </ion-input>
+            
+</ion-item>
+
+ 
+<ion-item>
+  <ion-label position="floating">Contraseña</ion-label>
+  <ion-input type = "password"
+            name ="passsword"
+            pattern=".{8,}"
+            [(ngModel)]="usuario.password"
+            required>
+          </ion-input>
+            
+</ion-item>
+
+  
+<ion-item>
+  <ion-label position="floating">Confirmar Contraseña</ion-label>
+  <ion-input type = "password"
+            name ="confirmaPassword"
+            pattern=".{8,}"
+            [(ngModel)]="usuario.confirmaPassword"
+            required>
+          </ion-input>
+            
+</ion-item>
+
+  <ion-button color = "dark" routerLink = "/tab1" expand="full" type="submit" 
+  [disabled]="formulario.invalid" > 
+  Crear Cuenta
+</ion-button>
+
+</form>
+ 
 </ion-content>
