@@ -1,0 +1,56 @@
+
+
+<ion-header [translucent]="true" no-border >
+  <ion-toolbar color="danger" >
+    <ion-title  >
+      Iniciar Sesiòn
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content [fullscreen]="true">
+  
+  <div align="center" class="top-20"><img src="assets/img/logoazu.png" ></div>
+  <ion-header collapse="condense">
+  </ion-header>
+
+
+  <form #formulario="ngForm" (ngSubmit)="onSubmitTemplate()">
+
+  <ion-item>
+    <ion-label position="floating">Usuario</ion-label>
+    <ion-input type = "nombreUsuario"
+              name ="nombreUsuario"
+              pattern = "[a-z]{4,15}"
+              [(ngModel)]="usuario.nombreUsuario"
+              required>
+            </ion-input>
+              
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Contraseña</ion-label>
+    <ion-input type = "password"
+              name ="confirmaPassword"
+              pattern=".{8,}"
+              [(ngModel)]="usuario.confirmaPassword"
+              required>
+            </ion-input>
+              
+  </ion-item>
+
+
+    <ion-button color = "danger" expand="full" fill="outline" routerLink = "/tab2" >
+      Crear cuenta
+    </ion-button>
+
+
+<ion-item>
+  <ion-button style="margin: auto;" color = "dark" routerLink = "/tab3"
+  [disabled]="formulario.invalid" > 
+    Ingresar
+  </ion-button>
+</ion-item>
+</form>
+</ion-content>
