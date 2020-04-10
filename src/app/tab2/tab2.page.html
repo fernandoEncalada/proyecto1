@@ -1,111 +1,57 @@
 <ion-header [translucent]="true">
-  <ion-toolbar color = "danger">
+  <ion-toolbar color="danger">
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/"></ion-back-button>
     </ion-buttons>
-    <ion-title  class="registro">
-      Registro de Usuario 
+    <ion-title class="registro">
+      Registro de Usuario
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true" >
+<ion-content [fullscreen]="true">
   <div align="center"><img src="assets/img/logoazu.png"></div>
   <ion-header collapse="condense">
   </ion-header>
 
 
- 
-  <form #formulario="ngForm" (ngSubmit)="onSubmitTemplate()">
-   
-  <ion-item>
-    <ion-label position="floating">Nombre</ion-label>
-    <ion-input type = "nombre"
-              name ="nombre"
-              pattern = "[a-z]{3,30}"
-              [(ngModel)]="usuario.nombre"
-              required>
-            </ion-input>
-              
-  </ion-item>
-
-  <ion-item>
-    <ion-label position="floating">Apellido</ion-label>
-    <ion-input type = "apellido"
-              name ="apellido"
-              pattern = "[a-z]{2,30}"
-              [(ngModel)]="usuario.apellido"
-              required>
-            </ion-input>
-              
-  </ion-item>
 
 
-
-
-    
-
-  
-     <ion-list>
+  <form [formGroup]="registerForm">
     <ion-item>
-    <ion-label position="floating">Correo Electrónico</ion-label>
-    <ion-input type = "email"
-              name ="email"
-              pattern = "[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" 
-              title="Eight or more characters"
-              [(ngModel)]="usuario.email"
-              required>
-            </ion-input>
-              
-  </ion-item>
- 
 
-</ion-list>
+      <ion-input formControlName="name" placeholder='Nombre Completo'></ion-input>
+      <ion-icon name="person" slot="start"></ion-icon>
 
-  
+    </ion-item>
 
+    <ion-item>
 
+      <ion-input formControlName="email" placeholder="Correo Electrónico"></ion-input>
+      <ion-icon name="mail" slot="start"></ion-icon>
 
-<ion-item>
-  <ion-label position="floating">Usuario</ion-label>
-  <ion-input type = "nombreUsuario"
-            name ="nombreUsuario"
-            pattern = "[a-z]{4,15}"
-            [(ngModel)]="usuario.nombreUsuario"
-            required>
-          </ion-input>
-            
-</ion-item>
+    </ion-item>
 
- 
-<ion-item>
-  <ion-label position="floating">Contraseña</ion-label>
-  <ion-input type = "password"
-            name ="passsword"
-            pattern=".{8,}"
-            [(ngModel)]="usuario.password"
-            required>
-          </ion-input>
-            
-</ion-item>
+    <ion-item>
 
-  
-<ion-item>
-  <ion-label position="floating">Confirmar Contraseña</ion-label>
-  <ion-input type = "password"
-            name ="confirmaPassword"
-            pattern=".{8,}"
-            [(ngModel)]="usuario.confirmaPassword"
-            required>
-          </ion-input>
-            
-</ion-item>
+      <ion-input formControlName="password" placeholder="Contraseña" type="password"></ion-input>
+      <ion-icon name="lock-closed" slot="start"></ion-icon>
 
-  <ion-button color = "dark" routerLink = "/tab1" expand="full" type="submit" 
-  [disabled]="formulario.invalid" > 
-  Crear Cuenta
-</ion-button>
+    </ion-item>
 
-</form>
- 
+    <ion-item>
+
+      <ion-input formControlName="confirm" placeholder="Confirmar Contraseña" type="password"></ion-input>
+      <ion-icon name="lock-closed" slot="start"></ion-icon>
+
+    </ion-item>
+
+    <ion-item>
+      <ion-button class="cuenta" (click)='register()' color="dark">
+        Crear Cuenta
+      </ion-button>
+    </ion-item>
+
+  </form>
+
 </ion-content>

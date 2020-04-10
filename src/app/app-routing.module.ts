@@ -77,6 +77,18 @@ const routes: Routes = [
   {
     path: 'mapa-congreso',
     loadChildren: () => import('./mapa-congreso/mapa-congreso.module').then( m => m.MapaCongresoPageModule)
+  },
+  {
+    path: 'crear-evento',
+    loadChildren: () => import('./crear-evento/crear-evento.module').then( m => m.CrearEventoPageModule)
+  },
+  {
+    path: 'favoritos',
+    loadChildren: () => import('./favoritos/favoritos.module').then( m => m.FavoritosPageModule)
+  },
+  {
+    path: 'base',
+    loadChildren: () => import('./base/base.module').then( m => m.BasePageModule)
   }
 ];
 @NgModule({
