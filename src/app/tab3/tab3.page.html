@@ -26,6 +26,10 @@
       <ion-back-button defaultHref="/tab1"></ion-back-button>
     </ion-buttons>
 
+    <ion-buttons slot="end">
+      <ion-button (click)=onLogout() routerLink="/tab1"> Salir </ion-button>
+    </ion-buttons>
+
     <ion-title>
       Eventos
     </ion-title>
@@ -36,10 +40,12 @@
 <ion-content [fullscreen]="true">
   <ion-list>
 
+ 
     <ion-card>
       <img src="assets/img/roto.jpeg" />
       <ion-card-content>
         <ion-card-title> <b>Roto Fest 2020</b>
+         {{isLogged}}
 
         </ion-card-title>
         <br>

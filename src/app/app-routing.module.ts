@@ -85,10 +85,6 @@ const routes: Routes = [
   {
     path: 'favoritos',
     loadChildren: () => import('./favoritos/favoritos.module').then( m => m.FavoritosPageModule)
-  },
-  {
-    path: 'base',
-    loadChildren: () => import('./base/base.module').then( m => m.BasePageModule)
   }
 ];
 @NgModule({

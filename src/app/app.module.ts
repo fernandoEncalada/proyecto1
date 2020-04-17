@@ -11,25 +11,22 @@ import { MenuController } from '@ionic/angular';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { firebaseConfig } from '../environments/environment';
-
-import{ AngularFireModule} from "@angular/fire";
-import { AngularFireAuthModule } from "@angular/fire/auth";
-import { AngularFireDatabaseModule } from '@angular/fire/database';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-
+import { FormsModule } from '@angular/forms';
+import {ServiceService} from '../app/Service/service.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, ReactiveFormsModule, FormsModule, IonicModule.forRoot(), AppRoutingModule, AngularFireModule.initializeApp(firebaseConfig),
-AngularFireDatabaseModule, AngularFireAuthModule ],
+  imports: [BrowserModule, FormsModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule ],
   providers: [
     StatusBar,
     SplashScreen,
     MenuController,
+    HttpClientModule,
     Geolocation,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    ServiceService
   ],
   bootstrap: [AppComponent]
 })

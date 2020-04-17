@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AngularFireAuth } from '@angular/fire/auth';
-import{ AuthService } from "../servicios/auth.service";
 import { AlertController } from '@ionic/angular';
-import { AngularFireDatabase } from '@angular/fire/database';
+import { User } from './../Modelo/task';
+import {AuthServiceService} from './../Service/auth-service.service';
+import { Router} from '@angular/router';
 
 @Component({
   selector: 'app-tab2',
@@ -13,21 +13,39 @@ import { AngularFireDatabase } from '@angular/fire/database';
 export class Tab2Page implements OnInit{
 
 
-  constructor(private auth:AngularFireAuth, private fb:FormBuilder, private alertController:AlertController,
-     private db:AngularFireDatabase) {}
+  constructor(private authService: AuthServiceService, private router: Router) {}
 
-  registerForm:FormGroup;
+  private user: User = {
+    name: "",
+    email: "",
+    password: ""
+  };
 
-ngOnInit(){
+  
+ngOnInit(){}
+ 
+
+  onRegister(): void {
+    this.authService.registerUser(this.user.name,this.user.email,this.user.password)
+    .subscribe(user => {
+     this.authService.setUser(user);
+     let token = user.idPersona;
+     this.authService.setToken(token);
+    });
+  }
+
+  
+
+  /*
   this.registerForm = this.fb.group({
     name:['', Validators.required],
     email:['', Validators.required],
     password:['', Validators.required],
     confirm:['', Validators.required]
 
-  })
-}
+  })*/
 
+/*
 register(){
   let user = {
   email:this.registerForm.controls['email'].value,
@@ -57,6 +75,6 @@ async registerAlert(status, sms) {
   await alert.present();
 }
 
-
+*/
 
 }

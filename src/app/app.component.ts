@@ -3,7 +3,6 @@ import { Component } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
-import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 
 @Component({
@@ -16,11 +15,10 @@ export class AppComponent {
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
-    private auth:AngularFireAuth,
     private router:Router
   ) {
     this.initializeApp();
-    this.verifyCurrentUser();
+   // this.verifyCurrentUser();
   }
 
   initializeApp() {
@@ -30,7 +28,7 @@ export class AppComponent {
     });
   }
 
-  verifyCurrentUser(){
+ /* verifyCurrentUser(){
     this.auth.authState.subscribe(e=>{
       console.log(e);
       if(e == null){
@@ -43,4 +41,5 @@ export class AppComponent {
     
     })
   }
+  */
 }

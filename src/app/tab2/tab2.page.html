@@ -17,40 +17,38 @@
 
 
 
-  <form [formGroup]="registerForm">
+  <form #formRegister="ngForm"(ngSubmit)="onRegister()">
     <ion-item>
 
-      <ion-input formControlName="name" placeholder='Nombre Completo'></ion-input>
+      <ion-input name="name" type="text" placeholder="Nombre Completo" [(ngModel)]="user.name" required ></ion-input>
       <ion-icon name="person" slot="start"></ion-icon>
 
     </ion-item>
 
     <ion-item>
 
-      <ion-input formControlName="email" placeholder="Correo Electrónico"></ion-input>
+      <ion-input name="email" type="email" placeholder="Correo Electrónico" [(ngModel)]="user.email" required></ion-input>
       <ion-icon name="mail" slot="start"></ion-icon>
 
     </ion-item>
 
     <ion-item>
 
-      <ion-input formControlName="password" placeholder="Contraseña" type="password"></ion-input>
+      <ion-input name="password" placeholder="Contraseña" type="password" [(ngModel)]="user.password" required></ion-input>
       <ion-icon name="lock-closed" slot="start"></ion-icon>
 
     </ion-item>
 
     <ion-item>
-
-      <ion-input formControlName="confirm" placeholder="Confirmar Contraseña" type="password"></ion-input>
-      <ion-icon name="lock-closed" slot="start"></ion-icon>
-
-    </ion-item>
-
-    <ion-item>
-      <ion-button class="cuenta" (click)='register()' color="dark">
+      <ion-button class="cuenta" type="submit"  color="dark" routerLink="/tab1">
         Crear Cuenta
       </ion-button>
     </ion-item>
+
+      <div class="form-group">
+        <a routerLink="/tab3" class="form-control">¿Ya tienes una cuenta?</a>
+      </div>
+  
 
   </form>
 
