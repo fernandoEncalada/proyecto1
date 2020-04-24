@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar color = "danger">
+  <ion-toolbar color="danger">
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/tab3"></ion-back-button>
     </ion-buttons>
@@ -7,6 +7,29 @@
   </ion-toolbar>
 </ion-header>
 
+<img src="../../assets/img/calendario.jpg" >
 <ion-content>
+  <ion-item>
+    <ion-input [(ngModel)]="evento.nombreEvento" placeholder="Nombre del evento"></ion-input>
+    <ion-icon name="newspaper" slot="start"></ion-icon>
+  </ion-item>
 
+  <ion-item>
+    <ion-input [(ngModel)]="evento.descripcion" placeholder="Descripción"></ion-input>
+    <ion-icon name="document-text" slot="start"></ion-icon>
+  </ion-item>
+
+  <ion-item>
+    <ion-input [(ngModel)]="evento.fecha" placeholder="Fecha del evento"></ion-input>
+    <ion-icon name="calendar" slot="start"></ion-icon>
+  </ion-item>
+
+  <ion-item>
+    <ion-input [(ngModel)]="evento.hora" placeholder="Hora del evento"></ion-input>
+    <ion-icon name="time" slot="start"></ion-icon>
+  </ion-item>
+
+  <ion-item>
+  <ion-button (click)="guardar()" color="dark">Crear evento</ion-button>
+</ion-item>
 </ion-content>

@@ -1,5 +1,5 @@
 export class Evento{
-    nombreCtegoria?: string;
+    nombreEvento?: string;
     descripcion?: string;
     fecha?: string;
     hora?: string;

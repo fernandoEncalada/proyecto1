@@ -18,12 +18,20 @@ export class ServiceService {
 
   eventos: Observable<any>;
 
-  getEventos(){
+  listar(){
     return this.http.get<Evento[]>(this.url + 'evento');
+  }
+  
+  recuperarUno(idEvento){
+    return this.http.get(this.url + 'evento/' + idEvento);
   }
 
   guardar(evento) {
     return this.http.post<Evento>(this.url + 'evento/', evento);
+  }
+
+  borrar(idEvento){
+    return this.http.delete(this.url + 'evento/' + idEvento);
   }
   /*
   createEvento(evento:Evento){

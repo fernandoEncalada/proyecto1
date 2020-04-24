@@ -14,9 +14,39 @@ export class Tab3Page implements OnInit {
   
   eventos:Evento[];
 
-  constructor(private authService: AuthServiceService, private router: Router, private service:ServiceService){}
+  constructor(private authService: AuthServiceService, private router: Router, private service:ServiceService){
+    this.listar();
+  }
+
+  listar(){
+    this.service.listar()
+    .subscribe(resp => {
+      console.log(resp);
+      const cs: any = resp;
+      this.eventos= cs;
+    }, err =>{
+      console.log(err);
+    });
+  }
+
+  eliminar(idEvento){
+    this.service.borrar(idEvento)
+    .subscribe(resp =>{
+      console.log(resp);
+      this.listar();
+    }, err => {
+      console.log(err);
+    });
+  }
+
+  editar(idEvento){
+    localStorage.setItem('idEvento', idEvento);
+    this.router.navigate(['/crear-evento']);
+
+  }
 
   Nuevo(){
+    localStorage.removeItem('idEvento');
     this.router.navigate(["crear-evento"]);
   }
 
@@ -27,7 +57,7 @@ export class Tab3Page implements OnInit {
   ngOnInit(){
   this.user = this.authService.getCurrentUser();
     console.log(this.user);
-  this.service.getEventos()
+  this.service.listar()
   .subscribe(data=>{
     this.eventos=data;
   })

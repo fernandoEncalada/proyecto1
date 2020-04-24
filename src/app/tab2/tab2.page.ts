@@ -32,6 +32,7 @@ ngOnInit(){}
      let token = user.idPersona;
      this.authService.setToken(token);
     });
+    alert("Cuenta creada satisfactoriamente");
   }
 
   

@@ -22,14 +22,17 @@
       </ion-button>
     </ion-buttons>
     -->
+
+    <ion-buttons slot="end">
+      <ion-button (click)="Nuevo()"></ion-button>
+      <ion-icon slot="icon-only" name="add-circle"></ion-icon>
+    </ion-buttons>
+
     <ion-buttons slot="end">
       <ion-button (click)=onLogout() routerLink="/tab1"></ion-button>
       <ion-icon slot="icon-only" name="exit"></ion-icon>
     </ion-buttons>
 
-    <ion-buttons slot="end">
-      <ion-button (click)="Nuevo()">Crear</ion-button>
-    </ion-buttons>
 
     <ion-title>
       Eventos
@@ -41,7 +44,7 @@
 <ion-content [fullscreen]="true">
   <ion-list>
 
- 
+
     <ion-card>
       <img src="assets/img/roto.jpeg" />
       <ion-card-content>
@@ -175,20 +178,47 @@
       </ion-card-content>
     </ion-card>
 
-    <ion-card  *ngFor= "let evento of eventos">
-      <ion-card-content>
-        <ion-card-title>
-          <b> {{evento.nombreEvento}} </b>
-        </ion-card-title>
-        <br>
-        <p>
-          {{evento.descripcion}}
-        </p>
+    <ion-item-sliding *ngFor="let evento of eventos">
+
+      <ion-item-options side="start">
+        <ion-item-option (click)="editar(evento.idEvento)" color="tertiary" expandable>
+          Editar
+        </ion-item-option>
+      </ion-item-options>
       
-      </ion-card-content>
-    </ion-card>
- 
+
+      <ion-card>
+        <ion-card-content>
+          <ion-card-title>
+            <b> {{evento.nombreEvento}} </b>
+          </ion-card-title>
+          <br>
+          <p>
+            {{evento.descripcion}}
+          </p>
+          <ion-item>
+            <ion-icon name="calendar"></ion-icon>
+            {{evento.fecha}}
+          </ion-item>
+
+          <ion-item>
+            <ion-icon name="time"></ion-icon>
+            {{evento.hora}}
+          </ion-item>
+
+        </ion-card-content>
+      </ion-card>
+
+      
+      <ion-item-options side="end">
+        <ion-item-option color="danger" (click)="eliminar(evento.idEvento)" expandable>
+          Eliminar
+        </ion-item-option>
+      </ion-item-options>
+      
+    </ion-item-sliding>
+
   </ion-list>
 
-  
+
 </ion-content>
