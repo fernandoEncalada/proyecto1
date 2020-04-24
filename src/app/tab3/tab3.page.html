@@ -22,12 +22,13 @@
       </ion-button>
     </ion-buttons>
     -->
-    <ion-buttons slot="start">
-      <ion-back-button defaultHref="/tab1"></ion-back-button>
+    <ion-buttons slot="end">
+      <ion-button (click)=onLogout() routerLink="/tab1"></ion-button>
+      <ion-icon slot="icon-only" name="exit"></ion-icon>
     </ion-buttons>
 
     <ion-buttons slot="end">
-      <ion-button (click)=onLogout() routerLink="/tab1"> Salir </ion-button>
+      <ion-button (click)="Nuevo()">Crear</ion-button>
     </ion-buttons>
 
     <ion-title>
@@ -45,7 +46,6 @@
       <img src="assets/img/roto.jpeg" />
       <ion-card-content>
         <ion-card-title> <b>Roto Fest 2020</b>
-         {{isLogged}}
 
         </ion-card-title>
         <br>
@@ -174,5 +174,21 @@
         </ion-button>
       </ion-card-content>
     </ion-card>
+
+    <ion-card  *ngFor= "let evento of eventos">
+      <ion-card-content>
+        <ion-card-title>
+          <b> {{evento.nombreEvento}} </b>
+        </ion-card-title>
+        <br>
+        <p>
+          {{evento.descripcion}}
+        </p>
+      
+      </ion-card-content>
+    </ion-card>
+ 
   </ion-list>
+
+  
 </ion-content>
