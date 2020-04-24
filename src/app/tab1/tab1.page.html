@@ -19,27 +19,28 @@
 
     <ion-item>
 
-      <ion-input name="email" type="email" placeholder="Correo Electrónico" [(ngModel)]="user.email" required></ion-input>
+      <ion-input name="email" type="email" placeholder="Correo Electrónico" [(ngModel)]="user.email"   pattern = "[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" 
+      title="Eight or more characters" required></ion-input>
       <ion-icon name="mail" slot="start"></ion-icon>
 
     </ion-item>
 
     <ion-item>
 
-      <ion-input name="password" placeholder="Contraseña" type="password" [(ngModel)]="user.password" required></ion-input>
+      <ion-input name="password" placeholder="Contraseña" type="password"  pattern=".{6,}" [(ngModel)]="user.password" required></ion-input>
       <ion-icon name="lock-closed" slot="start"></ion-icon>
 
     </ion-item>
 
-    <ion-item>
-      <ion-button (click)="onLogin()" class="cuenta" type="submit"  color="dark" routerLink="/tab3">
-        Crear Cuenta
+    <ion-item class="boton">
+      <ion-button (click)="onLogin()" class="cuenta" type="submit" color="dark" routerLink="/tab3" [disabled]="formRegister.invalid">
+        Ingresar
       </ion-button>
     </ion-item>
 
-      <div class="form-group">
-        <a routerLink="/tab2" class="form-control">¿Ya tienes una cuenta?</a>
-      </div>
+     <ion-item>
+        <ion-button routerLink="/tab2"  color = "dark">¿No tienes una cuenta?</ion-button>
+     </ion-item>
   
 
   </form>
